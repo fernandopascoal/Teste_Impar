@@ -23,7 +23,6 @@ height: 100%;
 outline: none;
 border: none;
 font-size: 24px;
-font-family: Muli;
 color: #757575;
 font-weight: 300;
 `

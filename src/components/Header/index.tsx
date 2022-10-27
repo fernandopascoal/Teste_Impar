@@ -6,7 +6,8 @@ import Search from '../Search'
 const Container = styled.div`
 margin: 0px;
 width: 100%;
-height: 261px;
+height: 320px;
+position: relative;
 display: flex;
 flex-direction: column;
 
@@ -24,7 +25,6 @@ z-index: 10;
 const Img = styled.img`
     width: 100%;
     position: absolute;
-    top: 5px;
 `
 
 
