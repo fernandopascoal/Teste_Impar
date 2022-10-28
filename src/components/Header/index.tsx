@@ -4,18 +4,15 @@ import backgroundImg from '../../asserts/imgs/backgroundSearch.png'
 import Search from '../Search'
 
 const Container = styled.div`
-margin: 0px;
 width: 100%;
 height: 320px;
-position: relative;
 display: flex;
 flex-direction: column;
-
 `
 
 const SearchContainer = styled.div`
-width: 100%;
-margin-top: 83px;
+margin: 83px 0px 0px 20px;
+padding-right: 30px;
 display: flex;
 justify-content: center;
 position: relative;
@@ -24,6 +21,7 @@ z-index: 10;
 
 const Img = styled.img`
     width: 100%;
+    min-height: 290px;
     position: absolute;
 `
 

@@ -1,17 +1,21 @@
+import { useState } from "react";
 import styled from "styled-components";
 import useGetPokes from "../../hooks/useGetPokes";
+import Pagination from "../Pagination";
 import PokeCard from "../PokeCards";
 
 
 const Container = styled.div`
-  margin-top: 32px;
+  margin: 32px 0px 100px 20px;
+  padding-right: 30px;
+  max-width: 1440px;
   width: 100%;
   display: flex;
   justify-content: center;
 `
 
 const CardsArea = styled.div`
-  max-width: 1046px;
+  max-width: 1050px;
   width: 100%;
 `
 const TopArea = styled.div`
@@ -40,8 +44,9 @@ const NewCardButton = styled.button`
 const PokeArea = styled.div`
    margin-top: 36px;
    width: 100%;
-   display: grid;
-   grid-template-columns: auto auto auto auto;
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
    column-gap: 37px;
    row-gap: 38px;
 
@@ -49,25 +54,29 @@ const PokeArea = styled.div`
 
 
 const CardsAreaInterface = () => {
-  const data = useGetPokes()
+  const [page, setPage] = useState(1)
+  const limit = 16
+  const data = useGetPokes(page.toString(), limit.toString())
 
-  console.log(data)
+
 
   return(
-    <Container>
+
+     <Container>
       <CardsArea>
         <TopArea>
           <Title>Resultado de busca</Title>
           <NewCardButton>Novo Card</NewCardButton>
         </TopArea>
         <PokeArea>
-          {data?.results.map(({name, url}) => (
+          {data && data?.results.map(({name, url}) => (
 
           <PokeCard key={name} name={name} url={url} />
           ))}
         </PokeArea>
+        <Pagination page={page} onChangePage={setPage} maxCount={data?.count ?? 1154} limit={limit} />
       </CardsArea>
-    </Container>
+     </Container>
   )
 }
 
