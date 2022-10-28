@@ -2,6 +2,7 @@ import styled from "styled-components"
 import trash from  '../../asserts/icons/trash.svg'
 import edit from  '../../asserts/icons/edit.svg'
 import hand from  '../../asserts/icons/hand.svg'
+import useGetPoke from "../../hooks/useGetPoke";
 
 const Card = styled.div`
   width: 234px;
@@ -21,12 +22,14 @@ const InfoArea = styled.div`
 `
 const ActionsCard = styled.div`
 width: 100%;
-height: 48px;
+height: 55px;
 margin-top: 28.83px;
 display: flex;
 align-items: center;
 justify-content: center;
 justify-items: center;
+border-bottom-right-radius: 8px;
+border-bottom-left-radius: 8px;
 box-shadow: inset 0px 3px 6px #0000000F;
 `
 
@@ -89,7 +92,7 @@ background-color: #00000010;
 opacity: 0.40;
 height: 1px;
 width: 90%;
-margin-top: 22.06px;
+margin-top: 35px;
 `
 
 const PokeInfo = styled.p`
@@ -100,16 +103,21 @@ const PokeInfo = styled.p`
   font-size: 16px;
 `
 
+interface PokeProps {
+  name: string
+  url: string;
+}
 
+const PokeCard = ({name, url}: PokeProps) => {
 
+  const image = useGetPoke(url)
 
-const PokeCard = () => {
    return (
      <Card>
          <InfoArea>
-           <ImgContainer><img src={hand} alt="Hand" /></ImgContainer>
+           <ImgContainer><img src={image?.sprites.front_default ?? hand } alt="Hand" /></ImgContainer>
            <InfoDivider />
-           <PokeInfo>Lorem ipsum dolor sit amet consectetur</PokeInfo>
+           <PokeInfo>{name.toLocaleUpperCase()}</PokeInfo>
          </InfoArea>
         <ActionsCard>
           <DeleteButton>

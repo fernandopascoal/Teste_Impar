@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import useGetPokes from "../../hooks/useGetPokes";
 import PokeCard from "../PokeCards";
 
 
@@ -39,10 +40,19 @@ const NewCardButton = styled.button`
 const PokeArea = styled.div`
    margin-top: 36px;
    width: 100%;
+   display: grid;
+   grid-template-columns: auto auto auto auto;
+   column-gap: 37px;
+   row-gap: 38px;
+
 `
 
 
 const CardsAreaInterface = () => {
+  const data = useGetPokes()
+
+  console.log(data)
+
   return(
     <Container>
       <CardsArea>
@@ -51,7 +61,10 @@ const CardsAreaInterface = () => {
           <NewCardButton>Novo Card</NewCardButton>
         </TopArea>
         <PokeArea>
-          <PokeCard />
+          {data?.results.map(({name, url}) => (
+
+          <PokeCard key={name} name={name} url={url} />
+          ))}
         </PokeArea>
       </CardsArea>
     </Container>
