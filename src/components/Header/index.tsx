@@ -44,9 +44,11 @@ margin-left: 23.97px;
 position: relative;
 z-index: 10;
 `
+interface Props {
+  onSearchPoke: (value: string | undefined) => void
+}
 
-
-const Header = () => {
+const Header = ({onSearchPoke}: Props) => {
   return (
     <Container>
       <Img src={backgroundImg} />
@@ -54,7 +56,7 @@ const Header = () => {
         <Logo src={impar} alt="Teste Ímpar" />
       </LogoContainer>
       <SearchContainer>
-        <Search />
+        <Search onSearchPoke={onSearchPoke} />
       </SearchContainer>
     </Container>
     )

@@ -104,7 +104,7 @@ const PokeInfo = styled.p`
 `
 
 interface PokeProps {
-  name: string
+  name: string;
   url: string;
 }
 

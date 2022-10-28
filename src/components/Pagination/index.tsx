@@ -6,7 +6,6 @@ margin: 30px 0px;
 width: 100%;
 justify-content: end;
 gap: 10px;
-
 `
 
 const Button = styled.button`
@@ -50,8 +49,6 @@ const handleNextPage = () => {
         props.onChangePage(props.page + props.limit) 
     }
 }
-
-console.log(props.maxCount)
 
 const handlePreviousPage = () => {
     if(props.page >= 17 && props.page <= props.maxCount) {

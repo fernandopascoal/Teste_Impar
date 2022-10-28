@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import searchIcon from '../../asserts/icons/lupa.svg'
 
@@ -33,11 +34,17 @@ const SearchButton = styled.button`
     cursor: pointer;
 `
 
-const Search = () => {
+interface Props {
+  onSearchPoke: (value: string | undefined) => void
+}
+
+const Search = ({onSearchPoke}: Props) => {
+  const [inputValeu, setInputValue] = useState<string | undefined>()
+
   return (  
     <SearchContainer>
-      <SearchInput placeholder='Digite aqui sua busca...' />
-      <SearchButton>
+      <SearchInput placeholder='Digite aqui sua busca...' value={inputValeu} onChange={(e) => setInputValue(e.target.value)} />
+      <SearchButton onClick={() => onSearchPoke(inputValeu)}>
         <img src={searchIcon} alt="" />
       </SearchButton>
     </SearchContainer>
