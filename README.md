@@ -11,7 +11,7 @@ instale as dependencias com:
 `yarn`
 
 rode o projeto com:
-`npm start`
+`yarn start`
 
 
 ## Observações
