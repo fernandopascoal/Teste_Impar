@@ -105,9 +105,12 @@ font-weight: 700;
 text-transform: capitalize;
 display: flex;
 gap: 4px;
+margin-bottom: 5px;
+align-items: center;
 `
 const Values = styled.span`
 color: #263238;
+font-size: 15px;
 display: flex;
 gap: 5px;
 `
