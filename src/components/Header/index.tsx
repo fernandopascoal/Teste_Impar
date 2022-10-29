@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import impar from '../../asserts/icons/logo.png'
 import backgroundImg from '../../asserts/imgs/backgroundSearch.png'
+import { ClimaTempo } from '../../interface/ClimaTempo'
 import Search from '../Search'
 
 const Container = styled.div`
@@ -46,9 +47,10 @@ z-index: 10;
 `
 interface Props {
   onSearchPoke: (value: string | undefined) => void
+  climate: ClimaTempo
 }
 
-const Header = ({onSearchPoke}: Props) => {
+const Header = ({onSearchPoke, climate}: Props) => {
   return (
     <Container>
       <Img src={backgroundImg} />

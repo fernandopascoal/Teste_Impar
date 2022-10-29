@@ -1,4 +1,4 @@
-import { pokemon } from '../instance/index';
+import { pokemon } from '../instance/Pokemon/index';
 import { useEffect, useState } from 'react';
 import { ResponsePokemons } from '../../interface/Pokemons';
 
