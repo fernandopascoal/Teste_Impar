@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import styled from "styled-components";
 import useGetPaginatedPokes from "../../hooks/useGetPaginatedPokes";
-import useGetPokes from "../../hooks/useGetPaginatedPokes";
 import { Pokemons } from "../../interface/Pokemons";
 import Pagination from "../Pagination";
 import PokeCard from "../PokeCards";
@@ -93,7 +92,7 @@ const CardsAreaInterface = (props: Props) => {
         <PokeArea>
           {pokemons && pokemons?.length > 0 ? pokemons.map(({name, url}) => (
 
-          <PokeCard key={name} name={name} url={url} onOpenModal={props.onOpenModal} getUrlShowModalPoke={props.getUrlShowModalPoke} />
+            <PokeCard key={name} name={name} url={url} onOpenModal={props.onOpenModal} getUrlShowModalPoke={props.getUrlShowModalPoke} />
           )) : <FailFeedback>Não foram encontrados resultados para sua pesquisa!</FailFeedback>}
         </PokeArea>
         {pokemons && pokemons?.length > 0 ?

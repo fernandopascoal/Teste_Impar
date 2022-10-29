@@ -25,6 +25,7 @@ const InfoArea = styled.button`
   align-items: center;
   flex-direction: column;
   padding: 28px 21px 0px 21px;
+  cursor: pointer;
 `
 const ActionsCard = styled.div`
 width: 100%;
