@@ -11,6 +11,10 @@ const Card = styled.div`
   box-shadow: 0px 3px 6px #E5E5E5;
   background-color: white;
   border: 1px solid #E4E4E4;
+  transition: ease-in-out 0.3s;
+  &:hover {
+    transform: translateY(-10px);
+  }
 `;
 
 const InfoArea = styled.div`
@@ -71,7 +75,7 @@ const EditButton = styled.button`
   color: #c5c5c5;
   font-size: 15px;
   &:hover {
-    color:#DB2525;
+    color:#E76316;
     opacity: 1;
   }
 `
@@ -106,9 +110,10 @@ const PokeInfo = styled.p`
 interface PokeProps {
   name: string;
   url: string;
+  onOpenModal: (value: boolean) => void;
 }
 
-const PokeCard = ({name, url}: PokeProps) => {
+const PokeCard = ({name, url, onOpenModal}: PokeProps) => {
 
   const image = useGetPoke(url)
 
@@ -120,12 +125,12 @@ const PokeCard = ({name, url}: PokeProps) => {
            <PokeInfo>{name.toLocaleUpperCase()}</PokeInfo>
          </InfoArea>
         <ActionsCard>
-          <DeleteButton>
+          <DeleteButton onClick={() => onOpenModal(true)}>
             <img src={trash} alt="" />
             Excluir
           </DeleteButton>
           <Divider />
-          <EditButton>
+          <EditButton onClick={() => onOpenModal(true)}>
             <img src={edit} alt="" />
             Editar
           </EditButton>

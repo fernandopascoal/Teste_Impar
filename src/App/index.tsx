@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import styled from "styled-components";
 import CardsAreaInterface from "../components/CadsAreaInterface";
 import Header from "../components/Header";
+import ModalFeedback from "../components/ModalFeedback";
 import useGetAllPokes from "../hooks/useGetAllPokes";
 import useGetTemperature from "../hooks/useGetTemperature";
 import { ClimaTempo } from "../interface/ClimaTempo";
@@ -16,6 +17,7 @@ const App = () => {
 
   const data = useGetAllPokes()
   const [search, setSearch] = useState<string | undefined>()
+  const [showModalFeedback, setShowModalFeedback] = useState(false)
 
   const climate = useGetTemperature()
 
@@ -30,8 +32,8 @@ const App = () => {
   return (
     <AppContainer>  
       <Header onSearchPoke={setSearch} climate={climate as ClimaTempo} />
-      <CardsAreaInterface search={search} resultSearchPokes={resultPokes} />
-      
+      <CardsAreaInterface search={search} resultSearchPokes={resultPokes} onOpenModal={setShowModalFeedback} />
+      {showModalFeedback ? <ModalFeedback onCloseModal={setShowModalFeedback} /> : null}
     </AppContainer>
   );
 }

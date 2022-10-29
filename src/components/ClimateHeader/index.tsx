@@ -16,12 +16,17 @@ const Container = styled.button`
 height: 100%;
 display: flex;
 justify-items: center;
+border-radius: 8px;
+padding: 2px 10px;
 justify-content: center;
 align-items: center;
 gap: 10px;
 background-color: transparent;
 border: none;
 cursor: pointer;
+&:hover {
+  box-shadow: 0px 3px 6px #414040;
+}
 `
 
 const Temperature = styled.p`

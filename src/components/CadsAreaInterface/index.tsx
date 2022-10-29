@@ -68,6 +68,7 @@ justify-content: center;
 interface Props {
   search: string | undefined;
   resultSearchPokes: Array<Pokemons> | undefined;
+  onOpenModal: (value: boolean) => void;
 }
 
 const CardsAreaInterface = (props: Props) => {
@@ -85,12 +86,12 @@ const CardsAreaInterface = (props: Props) => {
       <CardsArea>
         <TopArea>
           <Title>Resultado de busca</Title>
-          <NewCardButton>Novo Card</NewCardButton>
+          <NewCardButton onClick={() => props.onOpenModal(true)}>Novo Card</NewCardButton>
         </TopArea>
         <PokeArea>
           {pokemons && pokemons?.length > 0 ? pokemons.map(({name, url}) => (
 
-          <PokeCard key={name} name={name} url={url} />
+          <PokeCard key={name} name={name} url={url} onOpenModal={props.onOpenModal} />
           )) : <FailFeedback>Não foram encontrados resultados para sua pesquisa!</FailFeedback>}
         </PokeArea>
         {pokemons && pokemons?.length > 0 ?
