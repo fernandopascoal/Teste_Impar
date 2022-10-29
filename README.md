@@ -19,7 +19,9 @@ rode o projeto com:
 Eu tomei a liberdade de adicionar algumas funções, são elas:
 
 Modal para mais informações do Pokemon
+
 Modal com feedback para funções não implementadas
+
 Modal com mais informações para o clima
 
 
