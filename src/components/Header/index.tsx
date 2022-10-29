@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import impar from '../../asserts/icons/logo.png'
 import backgroundImg from '../../asserts/imgs/backgroundSearch.png'
 import { ClimaTempo } from '../../interface/ClimaTempo'
+import ClimateHeader from '../ClimateHeader'
 import Search from '../Search'
 
 const Container = styled.div`
@@ -17,7 +18,7 @@ padding-right: 30px;
 display: flex;
 justify-content: center;
 position: relative;
-z-index: 10;
+z-index: 5;
 `
 
 const Img = styled.img`
@@ -32,16 +33,17 @@ const LogoContainer = styled.div`
 width: 100%;
 height: 64px;
 box-shadow: 0px 3px 6px #00000029;
+padding: 0px 23.97px;
 background: linear-gradient(272deg, #AE276F 0%, #5F1478 100%);
 display: flex;
 align-items: center;
+justify-content: space-between;
 position: relative;
 z-index: 10;
 `
 const Logo = styled.img`
 width: 192px;
 height: 37px;
-margin-left: 23.97px;
 position: relative;
 z-index: 10;
 `
@@ -56,6 +58,7 @@ const Header = ({onSearchPoke, climate}: Props) => {
       <Img src={backgroundImg} />
       <LogoContainer>
         <Logo src={impar} alt="Teste Ímpar" />
+        <ClimateHeader climate={climate} />
       </LogoContainer>
       <SearchContainer>
         <Search onSearchPoke={onSearchPoke} />
