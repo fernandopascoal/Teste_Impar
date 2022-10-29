@@ -45,21 +45,24 @@ const Pagination = (props: PaginationProps) => {
 const lastPage = props.maxCount - props.limit
 
 const handleNextPage = () => {
-    if(props.page >= 1 && props.page <= lastPage) {
+    if(props.page >= 0 && props.page <= lastPage) {
         props.onChangePage(props.page + props.limit) 
     }
 }
 
 const handlePreviousPage = () => {
-    if(props.page >= 17 && props.page <= props.maxCount) {
+    if(props.page >= 16 && props.page <= props.maxCount) {
         props.onChangePage(props.page - props.limit) 
         
     }
 }
 
+
+
 const renderPage = (page: number) => {
     const displayPage = page / props.limit
-    return Math.ceil(displayPage)
+    console.log(displayPage)
+    return  Math.ceil(displayPage) + 1
 }
 
 return (

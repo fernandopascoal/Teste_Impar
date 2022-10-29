@@ -17,9 +17,11 @@ const Card = styled.div`
   }
 `;
 
-const InfoArea = styled.div`
+const InfoArea = styled.button`
   width: 100%;
   display: flex;
+  background-color: transparent;
+  border: none;
   align-items: center;
   flex-direction: column;
   padding: 28px 21px 0px 21px;
@@ -111,15 +113,16 @@ interface PokeProps {
   name: string;
   url: string;
   onOpenModal: (value: boolean) => void;
+  getUrlShowModalPoke: (value: string) => void;
 }
 
-const PokeCard = ({name, url, onOpenModal}: PokeProps) => {
+const PokeCard = ({name, url, onOpenModal, getUrlShowModalPoke}: PokeProps) => {
 
   const image = useGetPoke(url)
 
    return (
      <Card>
-         <InfoArea>
+         <InfoArea onClick={() => getUrlShowModalPoke(url)}>
            <ImgContainer><img src={image?.sprites.front_default ?? hand } alt="Hand" /></ImgContainer>
            <InfoDivider />
            <PokeInfo>{name.toLocaleUpperCase()}</PokeInfo>

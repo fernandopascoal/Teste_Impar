@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import styled from "styled-components";
+import useGetPaginatedPokes from "../../hooks/useGetPaginatedPokes";
 import useGetPokes from "../../hooks/useGetPaginatedPokes";
 import { Pokemons } from "../../interface/Pokemons";
 import Pagination from "../Pagination";
@@ -69,12 +70,13 @@ interface Props {
   search: string | undefined;
   resultSearchPokes: Array<Pokemons> | undefined;
   onOpenModal: (value: boolean) => void;
+  getUrlShowModalPoke: (value: string) => void;
 }
 
 const CardsAreaInterface = (props: Props) => {
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(0)
   const limit = 16
-  const data = useGetPokes(page.toString(), limit.toString())
+  const data = useGetPaginatedPokes(page.toString(), limit.toString())
 
   const pokemons = useMemo(() => {
     return props.search ? props.resultSearchPokes : data?.results
@@ -91,7 +93,7 @@ const CardsAreaInterface = (props: Props) => {
         <PokeArea>
           {pokemons && pokemons?.length > 0 ? pokemons.map(({name, url}) => (
 
-          <PokeCard key={name} name={name} url={url} onOpenModal={props.onOpenModal} />
+          <PokeCard key={name} name={name} url={url} onOpenModal={props.onOpenModal} getUrlShowModalPoke={props.getUrlShowModalPoke} />
           )) : <FailFeedback>Não foram encontrados resultados para sua pesquisa!</FailFeedback>}
         </PokeArea>
         {pokemons && pokemons?.length > 0 ?
